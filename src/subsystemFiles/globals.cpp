@@ -22,7 +22,7 @@ pros::Motor driveRightFront(19,pros::E_MOTOR_GEARSET_18, true);
 pros ::Motor_Group motor_Left({driveLeftBack , driveLeftFront});
 pros ::Motor_Group motor_Right({driveRightBack , driveRightFront});
 
-int flywheelPower = 0;
+double flywheelPower = 0;
 double theta;
 double xintinialposition;
 double yintinialposition;
