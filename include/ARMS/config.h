@@ -10,8 +10,8 @@ namespace arms {
 #define ODOM_DEBUG 0
 
 // Negative numbers mean reversed motor
-#define LEFT_MOTORS 1, 2
-#define RIGHT_MOTORS -3, -4
+#define LEFT_MOTORS 17,-11
+#define RIGHT_MOTORS 20, -19
 #define GEARSET pros::E_MOTOR_GEAR_200 // RPM of chassis motors
 
 // Ticks per inch
@@ -46,7 +46,7 @@ namespace arms {
 #define LEAD_PCT .6			 // Go-to-pose lead distance ratio (0-1)
 
 // Auton selector configuration constants
-#define AUTONS "Front", "Back", "Do Nothing" // Names of autonomi, up to 10
+#define AUTONS "Close", "Far", "Do Nothing", "AWP", "Ram" // Names of autonomi, up to 10
 #define HUE 0     // Color of theme from 0-359(H part of HSV)
 #define DEFAULT 1 // Default auton selected
 
