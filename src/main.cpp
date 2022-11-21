@@ -47,10 +47,11 @@ void on_center_button() {
 void initialize() {
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "NP(C) is on the Top...");
-	pros::lcd::set_text(2,"Get Clapped!");
+	pros::lcd::set_text(2,"Get Clapped!uuuuuu");
 	pros::lcd::set_text(3,"Made by Steve Rho of 39T");
 	pros::lcd::set_text(4,"Can you give us pneumatics");
 	pros::lcd::set_text(5,"so we become P(C)?");
+	pros::lcd::set_text(6,"ur momYUH");
 	pros::lcd::register_btn1_cb(on_center_button);
 	
 }

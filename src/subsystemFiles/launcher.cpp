@@ -11,8 +11,9 @@ void setLauncherMotors(){
     //int launcherpower = 70*(controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y));
     if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)){
         setLauncher(700);
-        pros::delay(300);
-        setLauncher(-700);
+        pros::delay(800);
+        setLauncher(0);
+        //setLauncher(-700);
     }
     if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)){
         setLauncher(-100);

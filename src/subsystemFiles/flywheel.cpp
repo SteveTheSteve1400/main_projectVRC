@@ -33,7 +33,7 @@ void setFlywheelMotors(){
         flywheelPower-=1000;
         pros::delay(200);
     }
-    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
         setFlywheel(-1*flywheelPower);
     }
     else{
