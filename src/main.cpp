@@ -1,5 +1,6 @@
 #include "main.h"
 #include "display/lv_objx/lv_btnm.h"
+#include "okapi/impl/device/rotarysensor/rotationSensor.hpp"
 #include "pros/rtos.hpp"
 
 
@@ -10,6 +11,21 @@
  * "I was pressed!" and nothing.
  */
 
+/*ChassisControllerBuilder()
+    .withMotors(
+		{17,11},
+		{20,19}
+	) // Left motor is 1, right motor is 2 (reversed)
+    // Green gearset, 4 inch wheel diameter, 11.5 inch wheel track
+    .withDimensions({AbstractMotor::gearset::green,(2.0/3.0)}, {{4_in, 11.5_in}, imev5GreenTPR})
+    .withSensors(
+       RotationSensor(6), RotationSensor(21), 
+	   RotationSensor(3)
+    )
+    // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR (360)
+    .withOdometry({{2.75_in, 7_in}, quadEncoderTPR})
+    .buildOdometry()
+*/
 
 void on_center_button() {
 	static bool pressed = false;
@@ -29,8 +45,11 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "NP(C) is on the Top... Get Clapped!");
-
+	pros::lcd::set_text(1, "NP(C) is on the Top...");
+	pros::lcd::set_text(2,"Get Clapped!");
+	pros::lcd::set_text(3,"Made by Steve Rho of 39T");
+	pros::lcd::set_text(4,"Can you give us pneumatics");
+	pros::lcd::set_text(5,"so we become P(C)?");
 	pros::lcd::register_btn1_cb(on_center_button);
 	
 }
@@ -129,12 +148,13 @@ void competition_initialize() {}
  */
 
 void driveF(int power){
-	motor_Left = power;
-	motor_Right = power;
+	motor_Left.move_relative(power,80 );
+	motor_Right.move_relative(power,80);
+
 }
 void spinStand(int power){
-	motor_Left = power;
-	motor_Right = -power;
+	motor_Left.move_relative(power,80 );
+	motor_Right.move_relative(-power,80);
 }
 void spinR(int power){
 	motor_Right = power;
@@ -145,6 +165,17 @@ void spinL(int power){
 void intakePower(int power){
 	intake = power;
 }
+void flywheelShoot(int power){
+	flywheel.move_voltage(power);
+	pros::delay(3000);
+	launcher.move_relative(800,100);
+    pros::delay(400);
+    launcher.move_relative(-800,100);
+	pros::delay(600);
+	launcher.move_relative(800,100);
+    pros::delay(400);
+    launcher.move_relative(-800,100);
+}
 void autonomouMains() {
 	driveF(10);
 	pros::delay(200);
@@ -154,10 +185,12 @@ void autonomouMains() {
 
 }
 void autonomousSide(){
-	driveF(100);
+	//flywheelShoot(7000);
+	//driveF(1600);
+	//spinStand(300);
 }
 void autonomous(){
-	//autonomouMains();
+	autonomousSide();
 }
 
 /**
@@ -175,7 +208,7 @@ void autonomous(){
  */
 void opcontrol() {
 	std::cout<<"hello";
-	flywheelPower=70;
+	flywheelPower=10000;
 	int time=0;
 	while(true){
 		//code to control the drive
@@ -186,6 +219,8 @@ void opcontrol() {
 		setFlywheelMotors();
 		//code to controller launcher
 		setLauncherMotors();
+
+		launch();
 
 		if(time%50){
 			controller.print(0,0, "Speed = %d",flywheelPower);

@@ -11,19 +11,22 @@
 //E_MOTOR_GEARSET_36: 100 rpm
 
 //Motors
-pros::Motor extension(1,pros::E_MOTOR_GEARSET_36, false);
-pros::Motor flywheel(13,pros::E_MOTOR_GEARSET_06, false);
-pros::Motor intake(16,pros::E_MOTOR_GEARSET_18, false);
-pros::Motor launcher(4,pros::E_MOTOR_GEARSET_36, false);
+pros::Motor extension(2,pros::E_MOTOR_GEARSET_36, false);
+pros::Motor flywheel(5,pros::E_MOTOR_GEARSET_INVALID, false);
+pros::Motor intake(4,pros::E_MOTOR_GEARSET_18, false);
+pros::Motor launcher(13,pros::E_MOTOR_GEARSET_36, false);
 pros::Motor driveLeftBack(17,pros::E_MOTOR_GEARSET_18, false);
 pros::Motor driveRightBack(20,pros::E_MOTOR_GEARSET_18, true);
 pros::Motor driveLeftFront(11,pros::E_MOTOR_GEARSET_18, false);
 pros::Motor driveRightFront(19,pros::E_MOTOR_GEARSET_18, true);
 pros ::Motor_Group motor_Left({driveLeftBack , driveLeftFront});
 pros ::Motor_Group motor_Right({driveRightBack , driveRightFront});
+pros ::Rotation RotLeft(6);
+pros ::Rotation RotRight(21);
+pros ::Rotation RotBack(3);
 
-double flywheelPower = 0;
-double theta;
+int flywheelPower = 0;
+double theta = pi/2;
 double xintinialposition;
 double yintinialposition;
 
