@@ -1,4 +1,5 @@
 
+#include "pros/imu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.h"
 #include "pros/motors.hpp"
@@ -16,6 +17,7 @@ extern pros::Motor_Group motor_Right; //({driveRightBack , driveRightFront});
 extern pros::Rotation RotLeft;
 extern pros::Rotation RotRight;
 extern pros::Rotation RotBack;
+extern pros::IMU inertialSensor;
 extern double theta;
 extern double xintinialposition;
 extern double yintinialposition;
