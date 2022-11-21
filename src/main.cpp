@@ -2,7 +2,7 @@
 #include "display/lv_objx/lv_btnm.h"
 #include "okapi/impl/device/rotarysensor/rotationSensor.hpp"
 #include "pros/rtos.hpp"
-
+#include "ARMS/config.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -52,6 +52,8 @@ void initialize() {
 	pros::lcd::set_text(4,"Can you give us pneumatics");
 	pros::lcd::set_text(5,"so we become P(C)?");
 	pros::lcd::register_btn1_cb(on_center_button);
+	arms::init();
+	
 	
 }
 
