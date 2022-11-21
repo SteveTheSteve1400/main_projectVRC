@@ -2,6 +2,7 @@
 #define _ARMS_CONFIG_H_
 
 #include "ARMS/api.h"
+#include "ARMS/odom.h"
 
 
 namespace arms {
@@ -26,7 +27,7 @@ namespace arms {
 #define IMU_PORT 0                           // Port 0 for disabled
 #define ENCODER_PORTS 0, 0, 0                // Port 0 for disabled,
 #define EXPANDER_PORT 0                      // Port 0 for disabled
-#define ENCODER_TYPE arms::odom::ENCODER_ADI // The type of encoders
+#define ENCODER_TYPE arms::odom::ENCODER_ROTATION// The type of encoders
 
 // Movement tuning
 #define SLEW_STEP 8          // Smaller number = more slew
