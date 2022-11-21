@@ -1,4 +1,5 @@
 #include "main.h"
+#include "ARMS/chassis.h"
 #include "display/lv_objx/lv_btnm.h"
 #include "okapi/impl/device/rotarysensor/rotationSensor.hpp"
 #include "pros/rtos.hpp"
@@ -192,8 +193,9 @@ void autonomousSide(){
 	//driveF(1600);
 	//spinStand(300);
 }
-void autonomous(){
-	autonomousSide();
+void autonomousArms(){
+	arms::chassis::move(0.5);
+	arms::chassis::turn(90, 100);
 }
 
 /**
