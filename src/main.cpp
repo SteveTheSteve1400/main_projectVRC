@@ -14,21 +14,7 @@
 	Steve made this change jfdskjkdsjsakjd
  */
 
-/*ChassisControllerBuilder()
-    .withMotors(
-		{17,11},
-		{20,19}
-	) // Left motor is 1, right motor is 2 (reversed)
-    // Green gearset, 4 inch wheel diameter, 11.5 inch wheel track
-    .withDimensions({AbstractMotor::gearset::green,(2.0/3.0)}, {{4_in, 11.5_in}, imev5GreenTPR})
-    .withSensors(
-       RotationSensor(6), RotationSensor(21), 
-	   RotationSensor(3)
-    )
-    // Specify the tracking wheels diam (2.75 in), track (7 in), and TPR (360)
-    .withOdometry({{2.75_in, 7_in}, quadEncoderTPR})
-    .buildOdometry()
-*/
+
 
 void on_center_button() {
 	static bool pressed = false;
