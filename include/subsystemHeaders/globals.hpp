@@ -16,6 +16,7 @@ extern pros::Motor_Group motor_Right; //({driveRightBack , driveRightFront});
 extern pros::Rotation RotLeft;
 extern pros::Rotation RotRight;
 extern pros::Rotation RotBack;
+//extern pros::IMU Inertial;
 extern double theta;
 extern double xintinialposition;
 extern double yintinialposition;
