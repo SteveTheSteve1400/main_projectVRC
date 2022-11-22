@@ -1,8 +1,10 @@
 #include "main.h"
+#include "ARMS/chassis.h"
 #include "display/lv_objx/lv_btnm.h"
 #include "okapi/impl/device/rotarysensor/rotationSensor.hpp"
+#include "pros/misc.h"
 #include "pros/rtos.hpp"
-
+#include "ARMS/config.h"
 
 /**
  * A callback function for LLEMU's center button.
@@ -53,6 +55,8 @@ void initialize() {
 	pros::lcd::set_text(5,"so we become P(C)?");
 	pros::lcd::set_text(6,"ur momYUH");
 	pros::lcd::register_btn1_cb(on_center_button);
+	arms::init();
+	
 	
 }
 
@@ -165,7 +169,7 @@ void spinL(int power){
 	motor_Left= power;
 }
 void intakePower(int power){
-	intake = power;
+	intake.move_relative(power, 100);
 }
 void flywheelShoot(int power){
 	flywheel.move_voltage(power);
@@ -191,8 +195,14 @@ void autonomousSide(){
 	//driveF(1600);
 	//spinStand(300);
 }
-void autonomous(){
-	autonomousSide();
+void autonomousArms(){
+	//23.4 inches per tile
+	arms::chassis::move(-1);
+	intakePower(900);
+	arms::chassis::move(1.0);
+	arms::chassis::turn(90, 100);
+	arms::chassis::move(-11.0);
+	intakePower(900);
 }
 
 /**
@@ -223,7 +233,9 @@ void opcontrol() {
 		setLauncherMotors();
 
 		launch();
+		
 
+		
 		if(time%50){
 			controller.print(0,0, "Speed = %d",flywheelPower);
 		}

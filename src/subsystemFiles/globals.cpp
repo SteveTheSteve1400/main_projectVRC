@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/imu.hpp"
 #include "pros/misc.h"
 #include "pros/misc.hpp"
 #include "pros/motors.h"
@@ -25,11 +26,19 @@ pros ::Motor_Group motor_Right({driveRightBack , driveRightFront});
 pros ::Rotation RotLeft(6);
 pros ::Rotation RotRight(21);
 pros ::Rotation RotBack(3);
-
+pros ::IMU inertialSensor(15);
 int flywheelPower = 0;
 double theta = pi/2;
 double xintinialposition;
 double yintinialposition;
+double fError;
+double fDerivate;
+double fTotalError;
+double fPrevError = 0;
+double fKp = 0.0001;
+double fKi = 0.0000001;
+double fKd = 0.0000001;
+
 
 
 //Controllers
