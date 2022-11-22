@@ -24,6 +24,14 @@ extern double yintinialposition;
 extern int flywheelPower;
 //CONTROLLERS
 extern pros::Controller controller;
+extern double fError;
+extern double fDerivate;
+extern double fTotalError;
+extern double fPrevError;
+extern double fKp;
+extern double fKi;
+extern double fKd;
+
 //extern pros::Controller secondcontroller;
 
 //MISCELLANEOUS (where you declare things that u want to abbreviate)

@@ -30,6 +30,14 @@ int flywheelPower = 0;
 double theta = pi/2;
 double xintinialposition;
 double yintinialposition;
+double fError;
+double fDerivate;
+double fTotalError;
+double fPrevError = 0;
+double fKp = 0.0001;
+double fKi = 0.0000001;
+double fKd = 0.0000001;
+
 
 
 //Controllers
