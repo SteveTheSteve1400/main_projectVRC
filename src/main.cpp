@@ -167,7 +167,7 @@ void spinL(int power){
 	motor_Left= power;
 }
 void intakePower(int power){
-	intake = power;
+	intake.move_relative(power, 100);
 }
 void flywheelShoot(int power){
 	flywheel.move_voltage(power);
@@ -194,8 +194,13 @@ void autonomousSide(){
 	//spinStand(300);
 }
 void autonomousArms(){
-	arms::chassis::move(0.5);
+	//23.4 inches per tile
+	arms::chassis::move(-1);
+	intakePower(900);
+	arms::chassis::move(1.0);
 	arms::chassis::turn(90, 100);
+	arms::chassis::move(-11.0);
+	intakePower(900);
 }
 
 /**
