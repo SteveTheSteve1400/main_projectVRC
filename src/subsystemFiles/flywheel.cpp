@@ -62,8 +62,13 @@ void setFlywheelMotors(){
         flywheelPower-=1000;
         pros::delay(200);
     }
-    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-        setFlywheel(-1*flywheelPower);
+    fError = flywheel.get_voltage() - flywheelPower;
+    fDerivate = fError - fPrevError;
+    fTotalError += fError;
+    flywheelPower = fKp*fError + fKi*fTotalError + fKd*fDerivate;
+    
+    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+        setFlywheel(flywheelPower);
     }
     else{
         setFlywheel(0);

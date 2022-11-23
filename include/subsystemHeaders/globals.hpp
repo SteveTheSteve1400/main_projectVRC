@@ -30,6 +30,7 @@ extern double fPrevError;
 extern double fKp;
 extern double fKi;
 extern double fKd;
+extern uint32_t timeTaken;
 
 //extern pros::Controller secondcontroller;
 

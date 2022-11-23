@@ -5,6 +5,8 @@
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
 #include "ARMS/config.h"
+#include <chrono>
+#include <machine/_default_types.h>
 
 /**
  * A callback function for LLEMU's center button.
@@ -209,15 +211,14 @@ void opcontrol() {
 	flywheelPower=10000;
 	int time=0;
 	while(true){
+		timeTaken = pros::millis();
 		//code to control the drive
 		setDriveMotors();
 		//code to control the intake
 		setIntakeMotors();
 		//code to controller flywheel
-		setFlywheelMotors();
 		//code to controller launcher
 		setLauncherMotors();
-
 		launch();
 		
 
@@ -230,3 +231,4 @@ void opcontrol() {
 
 	}
 }
+
