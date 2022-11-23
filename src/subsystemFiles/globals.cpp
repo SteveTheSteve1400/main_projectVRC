@@ -33,7 +33,7 @@ double xintinialposition;
 double yintinialposition;
 double fError;
 double fDerivate;
-double fTotalError;
+double fTotalError = 0;
 double fPrevError = 0;
 double fKp = 0.0001;
 double fKi = 0.0000001;
@@ -44,5 +44,5 @@ uint32_t timeTaken;
 
 //Controllers
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
-//pros:: Controller secondcontroller(pros::E_CONTROLLER_PARTNER);'
+//pros:: Controller secondcontroller(pros::E_CONTROLLER_PARTNER);
 
