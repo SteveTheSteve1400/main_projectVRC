@@ -20,7 +20,6 @@ pros::Motor driveLeftBack(17,pros::E_MOTOR_GEARSET_18, false);
 pros::Motor driveRightBack(20,pros::E_MOTOR_GEARSET_18, true);
 pros::Motor driveLeftFront(11,pros::E_MOTOR_GEARSET_18, false);
 pros::Motor driveRightFront(19,pros::E_MOTOR_GEARSET_18, true);
-pros::IMU Inertial(1);
 pros ::Motor_Group motor_Left({driveLeftBack , driveLeftFront});
 pros ::Motor_Group motor_Right({driveRightBack , driveRightFront});
 pros ::Rotation RotLeft(6);

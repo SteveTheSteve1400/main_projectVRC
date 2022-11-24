@@ -1,6 +1,7 @@
 #ifndef _ARMS_PID_H_
 #define _ARMS_PID_H_
 
+#include "ARMS/point.h"
 #include <array>
 
 namespace arms::pid {
