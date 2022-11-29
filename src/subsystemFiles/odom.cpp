@@ -2,7 +2,39 @@
 #include "okapi/api/util/mathUtil.hpp"
 #include "pros/rotation.hpp"
 #include <cmath>
-double prevL;
+double changeMid = 0;
+double prevM;
+double changeBack = 0;
+double prevB;
+double dM = changeMid - prevM;
+double dB = changeBack - prevB;
+double diam_of_odomwheel = (2.75*pi)/12;
+double rotation;
+double x; //adding small orientated x
+double y; //adding small orientated y
+double posx = 0;
+double posy = 0;
+
+void odometryS(){
+    while(1){
+        rotation = inertialSensor.get_rotation();
+        prevM = changeMid;
+        prevB = changeBack;
+        changeMid = RotMid.get_angle();
+        changeBack = RotBack.get_angle();
+        if (changeMid - prevM < 0) ybeforeorientation = (360 + (changeMid - prevM))*diam_of_odomwheel/36000; // converting to inches
+        if(changeMid - prevM > 18000) ybeforeorientation = (360 - (changeMid - prevM))*diam_of_odomwheel/36000; // converting to inches
+        if (changeBack - prevB < 0) xbeforeorientation = (360 + (changeMid - prevM))*diam_of_odomwheel/36000; // converting to inches
+        if (changeBack - prevB > 18000) xbeforeorientation = (360 - (changeMid - prevM))*diam_of_odomwheel/36000; // converting to inches
+        x = ybeforeorientation*cos(rotation) + xbeforeorientation*cos(rotation-90);
+        y = ybeforeorientation*sin(rotation) + xbeforeorientation*sin(rotation-90);
+        posx += x;
+        posy += y;
+    }
+}
+   
+
+/*double prevL;
 double prevR;
 double prevB;
 
@@ -52,4 +84,4 @@ void odometryS(){
         yintinialposition = yintinialposition + finaladdy;
         
     }
-}
+}*/
