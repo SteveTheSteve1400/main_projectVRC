@@ -23,7 +23,7 @@ pros::Motor driveRightFront(19,pros::E_MOTOR_GEARSET_18, true);//  Port is 19, 2
 pros ::Motor_Group motor_Left({driveLeftBack , driveLeftFront});// Port is 17 and 11, 200 rpm, not reversed
 pros ::Motor_Group motor_Right({driveRightBack , driveRightFront});// Port is 20 and 19, 200 rpm, reversed
 pros ::Rotation RotLeft(6);// Port is 6
-pros ::Rotation RotRight(21);// Port is 21
+pros ::Rotation RotMid(21);// Port is 21 (changed to mid)
 pros ::Rotation RotBack(3);// Port is 3
 pros ::IMU inertialSensor(15);// Port is 15
 int flywheelPower = 0;
