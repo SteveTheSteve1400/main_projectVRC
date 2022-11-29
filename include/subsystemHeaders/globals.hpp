@@ -15,7 +15,7 @@ extern pros::Motor launcher;
 extern pros::Motor_Group motor_Left; //({driveLeftBack , driveLeftFront});
 extern pros::Motor_Group motor_Right; //({driveRightBack , driveRightFront});
 extern pros::Rotation RotLeft;
-extern pros::Rotation RotRight;
+extern pros::Rotation RotMid;
 extern pros::Rotation RotBack;
 extern pros::IMU inertialSensor;
 extern double theta;
