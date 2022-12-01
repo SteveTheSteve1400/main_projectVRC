@@ -11,6 +11,7 @@ void setFlywheel(int power){
 
 //DRIVER CONTROL FUNCTION
 void setFlywheelMotors(){
+	
     //top triggers flywheel;
     //
     //
@@ -54,25 +55,27 @@ void setFlywheelMotors(){
 	turn_prevError = turn_error;
 	return 0;
     */
-    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
-        flywheelPower+= 1000;
-        pros::delay(200);
-    }
-    else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
-        flywheelPower-=1000;
-        pros::delay(200);
-    }
-    fError = flywheel.get_voltage() - flywheelPower;
-    fDerivate = fError - fPrevError;
-    fTotalError += fError;
-    flywheelPower = fKp*fError + fKi*fTotalError + fKd*fDerivate;
-    
-    if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-        setFlywheel(flywheelPower);
-    }
-    else{
-        setFlywheel(0);
-    }
-    fPrevError = fError;
+	double fSubstract;
+	if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
+	flywheelPower+= 1000;
+	pros::delay(200);
+	}
+	else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)){
+	flywheelPower-=1000;
+	pros::delay(200);
+	}
+	fError =  flywheelPower - flywheel.get_voltage();
+	fDerivate = fError - fPrevError;
+	fTotalError += fError;
+	fSubtract = fKp*fError + fKi*fTotalError + fKd*fDerivate;
+	flywheelPower = flywheelPower - fSubtract;
+	
+	if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+	setFlywheel(flywheelPower);
+	}
+	else{
+	setFlywheel(0);
+	}
+	fPrevError = fError;
 
 }
