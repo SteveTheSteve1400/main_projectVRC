@@ -65,7 +65,7 @@ void setFlywheelMotors(){
 	pros::delay(200);
 	}
 	fError =  flywheelPower - flywheel.get_voltage();
-	fDerivate = fError - fPrevError;
+	fDerivate = (fError - fPrevError)/(1/6000); 
 	fTotalError += fError;
 	fSubtract = fKp*fError + fKi*fTotalError + fKd*fDerivate;
 	flywheelPower = flywheelPower - fSubtract;
